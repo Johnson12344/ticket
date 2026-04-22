@@ -20,8 +20,9 @@
   --green:#16A34A;
   --gold:#D97706;
   --nav-h:58px;
+   --safe-top:max(env(safe-area-inset-top,0px),20px);
    --nav-safe:env(safe-area-inset-bottom,0px);
-   --nav-safe-tight:max(0px,calc(var(--nav-safe) - 22px));
+   --nav-safe-tight:max(0px,calc(var(--nav-safe) - 30px));
    --app-w:min(100vw,390px);
 }
 html,body{height:100%;overflow:hidden;}
@@ -36,7 +37,7 @@ body{font-family:'Outfit',system-ui,-apple-system,sans-serif;background:#DCD9D2;
 
 /* ── BOTTOM NAV ── */
 #nav{position:fixed;bottom:0;left:50%;right:auto;transform:translateX(-50%);width:var(--app-w);height:calc(var(--nav-h) + var(--nav-safe-tight));background:rgba(255,255,255,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;z-index:800;padding:0 4px var(--nav-safe-tight);box-sizing:border-box;}
-.nv{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;cursor:pointer;padding:6px 0 2px;}
+.nv{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;cursor:pointer;padding:6px 0 0;}
 .nv svg{width:22px;height:22px;stroke:#8E8EA0;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s;}
 .nv span{font-size:10px;font-weight:600;color:#8E8EA0;transition:color .2s;letter-spacing:.02em;}
 .nv.on svg{stroke:var(--tm-blue);}
@@ -53,8 +54,8 @@ body{font-family:'Outfit',system-ui,-apple-system,sans-serif;background:#DCD9D2;
 }
 
 /* ── SHARED UI ── */
-.topbar{background:var(--tm-blue);padding:calc(env(safe-area-inset-top,0px) + 14px) 16px 16px;flex-shrink:0;}
-.page-top{background:var(--tm-blue);padding:calc(env(safe-area-inset-top,0px) + 14px) 16px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.topbar{background:var(--tm-blue);padding:calc(var(--safe-top) + 10px) 16px 16px;flex-shrink:0;}
+.page-top{background:var(--tm-blue);padding:calc(var(--safe-top) + 10px) 16px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
 .page-title{color:#fff;font-size:18px;font-weight:700;letter-spacing:-.2px;}
 .tabs-row{display:flex;border-bottom:1px solid var(--border);flex-shrink:0;background:#fff;}
 .tab{flex:1;padding:13px 8px;text-align:center;font-size:13px;font-weight:700;color:var(--text3);cursor:pointer;border-bottom:2.5px solid transparent;transition:all .2s;}
@@ -70,7 +71,7 @@ body{font-family:'Outfit',system-ui,-apple-system,sans-serif;background:#DCD9D2;
    DISCOVER / HOME – TICKETMASTER STYLE
    ═══════════════════════════════════════════ */
 /* Top blue header */
-.tm-header{background:var(--tm-blue);padding:calc(env(safe-area-inset-top,0px) + 16px) 16px 0;flex-shrink:0;}
+.tm-header{background:var(--tm-blue);padding:calc(var(--safe-top) + 8px) 16px 0;flex-shrink:0;}
 .tm-header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
 .tm-logo{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;color:#fff;letter-spacing:-.5px;}
 .tm-user-icon{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;}
