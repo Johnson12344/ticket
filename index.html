@@ -329,7 +329,7 @@ body.theme-dark .toggle.on{background:#34C759 !important;}
 .f-xfr:active{background:#333;}
 
 /* AUTH */
-.auth-hdr{background:#1b1b20;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;border-bottom:1px solid rgba(255,255,255,.08);}
+.auth-hdr{background:#1b1b20;padding:calc(var(--safe-top) + 10px) 16px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;border-bottom:1px solid rgba(255,255,255,.08);}
 .auth-close{color:#fff;font-size:20px;line-height:1;cursor:pointer;width:28px;text-align:left;}
 .auth-ttl{color:#fff;font-size:15px;font-weight:500;letter-spacing:.01em;}
 .auth-body{padding:56px 28px 28px;flex:1;overflow-y:auto;display:flex;flex-direction:column;align-items:center;text-align:center;background:#f1eef3;}
@@ -494,7 +494,7 @@ body.theme-dark .toggle.on{background:#34C759 !important;}
 .login-version{position:absolute;bottom:28px;font-size:11px;color:rgba(255,255,255,.25);text-align:center;animation:loginFadeIn 2s ease 1s both;opacity:0;letter-spacing:.5px;}
 /* ── ADMIN SCREEN ── */
 .scr.admin-scr{background:#F0EEE8;}
-.admin-top{background:#F0EFF5;padding:14px 16px 0;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.admin-top{background:#F0EFF5;padding:calc(var(--safe-top) + 10px) 16px 14px;display:flex;align-items:center;gap:12px;flex-shrink:0;}
 .admin-back{font-size:22px;cursor:pointer;color:#1a1a1a;padding:4px 8px 4px 0;font-weight:600;}
 .admin-top-title{font-size:17px;font-weight:600;color:#1a1a1a;letter-spacing:-.2px;}
 .admin-card{background:#fff;border-radius:18px;padding:16px;margin:12px 16px;box-shadow:0 2px 12px rgba(0,0,0,.06);}
@@ -841,7 +841,7 @@ const SVG_EAGLES=makeConcertSVG('eagles'),SVG_JAYZ=makeConcertSVG('jayz'),SVG_ME
 
 <!-- TRANSFER SELECT -->
 <div class="scr full" id="s-xfr-select">
-  <div style="background:var(--black);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;"><div class="back-circle" style="background:rgba(255,255,255,.12);" onclick="goBack()">←</div><div style="text-align:center;"><div style="color:#fff;font-size:15px;font-weight:800;" id="xfr-ev-name">—</div><div style="color:#666;font-size:11px;margin-top:1px;" id="xfr-ev-addr">—</div></div><div class="scan-box">▦</div></div>
+  <div style="background:var(--black);padding:calc(var(--safe-top) + 10px) 16px 12px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;"><div class="back-circle" style="background:rgba(255,255,255,.12);" onclick="goBack()">←</div><div style="text-align:center;"><div style="color:#fff;font-size:15px;font-weight:800;" id="xfr-ev-name">—</div><div style="color:#666;font-size:11px;margin-top:1px;" id="xfr-ev-addr">—</div></div><div class="scan-box">▦</div></div>
   <!-- Live map in transfer too -->
   <div class="live-map-wrap" style="height:100px;" id="xfr-map-wrap"><iframe id="xfr-map-iframe" allowfullscreen loading="lazy" title="Venue map" style="width:100%;height:100%;border:none;display:block;pointer-events:none;"></iframe></div>
   <div class="tabs-row"><div class="tab on">Tickets</div><div class="tab">Extras</div></div>
@@ -852,7 +852,7 @@ const SVG_EAGLES=makeConcertSVG('eagles'),SVG_JAYZ=makeConcertSVG('jayz'),SVG_ME
 
 <!-- TRANSFER TO -->
 <div class="scr full" id="s-xfr-to">
-  <div style="background:var(--black);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;"><div class="back-circle" style="background:rgba(255,255,255,.12);" onclick="goBack()">←</div><div style="color:#fff;font-size:15px;font-weight:800;">Transfer To</div><div style="width:38px;"></div></div>
+  <div style="background:var(--black);padding:calc(var(--safe-top) + 10px) 16px 12px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;"><div class="back-circle" style="background:rgba(255,255,255,.12);" onclick="goBack()">←</div><div style="color:#fff;font-size:15px;font-weight:800;">Transfer To</div><div style="width:38px;"></div></div>
   <div class="tabs-row"><div class="tab on">Tickets</div><div class="tab">Extras</div></div>
   <div class="caps-lbl">Transfer To</div>
   <div class="xfr-opt" onclick="goto('s-recipient')"><span style="font-size:20px;">👥</span> Select From Contacts</div>
@@ -863,7 +863,7 @@ const SVG_EAGLES=makeConcertSVG('eagles'),SVG_JAYZ=makeConcertSVG('jayz'),SVG_ME
 
 <!-- RECIPIENT FORM -->
 <div class="scr full" id="s-recipient">
-  <div style="background:var(--black);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;"><div class="back-circle" style="background:rgba(255,255,255,.12);" onclick="goBack()">←</div><div style="color:#fff;font-size:15px;font-weight:800;">Recipient Details</div><div style="width:38px;"></div></div>
+  <div style="background:var(--black);padding:calc(var(--safe-top) + 10px) 16px 12px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;"><div class="back-circle" style="background:rgba(255,255,255,.12);" onclick="goBack()">←</div><div style="color:#fff;font-size:15px;font-weight:800;">Recipient Details</div><div style="width:38px;"></div></div>
   <div class="scroll" style="padding:20px 16px;">
     <h2 style="font-size:23px;font-weight:900;letter-spacing:-.5px;margin-bottom:22px;text-transform:uppercase;">Recipient Details</h2>
     <div class="ff"><label>First Name</label><input type="text" id="rf-first" placeholder="First name"></div>

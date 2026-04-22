@@ -571,7 +571,7 @@ body{font-family:'Outfit',system-ui,-apple-system,sans-serif;background:#DCD9D2;
 .tm-home-shell{display:flex;flex-direction:column;height:100%;}
 .tm-home-header{position:sticky;top:0;z-index:10;background:#dfdfdf;box-shadow:0 1px 0 rgba(0,0,0,.08);}
 
-.tm-country-strip{height:60px;background:#06080d;padding:0 12px;display:flex;align-items:center;}
+.tm-country-strip{background:#06080d;padding:max(env(safe-area-inset-top,0px),20px) 12px 0;min-height:60px;display:flex;align-items:flex-end;padding-bottom:8px;}
 .tm-country-pill{display:flex;align-items:center;gap:8px;color:#fff;font-size:38px;font-weight:500;letter-spacing:-.2px;}
 .tm-country-flag{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;font-size:22px;overflow:hidden;}
 
@@ -711,7 +711,7 @@ body{font-family:'Outfit',system-ui,-apple-system,sans-serif;background:#DCD9D2;
 }
 
 @media (max-width: 640px){
-   .tm-country-strip{height:36px;padding:0 10px;}
+   .tm-country-strip{min-height:36px;height:auto;padding:max(env(safe-area-inset-top,0px),20px) 10px 8px;}
    .tm-country-pill{font-size:14px;}
    .tm-country-flag{width:24px;height:24px;font-size:16px;}
    .tm-nav-main{height:52px;padding:0 10px;}
