@@ -14,7 +14,7 @@
   <!-- PWA -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <style>
 .scroll{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;}
 .scroll::-webkit-scrollbar{display:none;}
@@ -22,12 +22,12 @@
 :root{
   --tm-app-logo:url("ta.webp");
   --nav-safe:env(safe-area-inset-bottom,0px);
-  --nav-safe-tight:max(0px,calc(var(--nav-safe) - 12px));
+  --nav-safe-tight:max(0px,calc(var(--nav-safe) - 22px));
 }
 
 /* NAV */
 #nav{position:fixed;bottom:0;left:50%;right:auto;transform:translateX(-50%);width:min(100vw,390px);height:calc(var(--nav-h) + var(--nav-safe-tight));background:rgba(246,244,239,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:1px solid var(--border);display:flex;z-index:800;padding:0 4px var(--nav-safe-tight);box-sizing:border-box;}
-.nv{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;cursor:pointer;padding:8px 0 4px;}
+.nv{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;cursor:pointer;padding:8px 0 2px;}
 .nv svg{width:22px;height:22px;stroke:#9CA3AF;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s;}
 .nv span{font-size:10px;font-weight:600;color:#9CA3AF;transition:color .2s;letter-spacing:.02em;}
 .nv.on svg{stroke:var(--blue);}
@@ -538,7 +538,7 @@ body.theme-dark .toggle.on{background:#34C759 !important;}
   <!-- PWA -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Ticketmaster">
   <meta name="theme-color" content="#080C12">
   <link rel="apple-touch-icon" href="ta.webp">
