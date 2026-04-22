@@ -203,5 +203,8 @@ app.get('*', (_req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Ticketmaster server running on http://localhost:${PORT}`);
+  const url = process.env.RAILWAY_STATIC_URL
+    ? `https://${process.env.RAILWAY_STATIC_URL}`
+    : `http://localhost:${PORT}`;
+  console.log(`Ticketmaster server running on ${url}`);
 });
