@@ -48,7 +48,13 @@ workflows:
 
     publishing:
       app_store_connect:
-        auth: integration   # connect your Apple account in Codemagic > Integrations
+        # After connecting Apple Developer account in Codemagic > Integrations > Apple Developer Portal,
+        # add the API key variables below in Codemagic > Environment variables:
+        #   APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
 
       email:
         recipients:
