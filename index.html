@@ -154,26 +154,38 @@
 .dir-row{padding:18px 16px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;color:#1a1c24;background:#f7f7f8;margin:0 16px 18px;border-bottom:none;border-top:none;}
 .dir-row:active{background:var(--surface);}
 
-/* ── YOU GOT TICKETS card ── */
-.ygt-wrap{margin:0 18px;border-radius:0;overflow:hidden;position:relative;background:#9aa1ab;box-shadow:none;border:none;}
-.ygt-inner{position:relative;display:flex;align-items:stretch;gap:0;height:160px;}
-/* Left: image column */
-.ygt-img-col{display:flex;flex-direction:column;width:59%;min-width:59%;flex-shrink:0;background:#111216;}
+/* YGT clone container: fixed-width centered block */
+.ygt-wrap,.social-sec,.share-row{width:min(calc(100% - 32px),560px);margin-left:auto;margin-right:auto;}
+
+/* YOU GOT TICKETS top card */
+.ygt-wrap{border-radius:0;overflow:hidden;position:relative;background:#959da7;box-shadow:none;border:none;}
+.ygt-inner{position:relative;display:flex;align-items:stretch;gap:0;height:170px;}
+
+/* Left card */
+.ygt-img-col{display:flex;flex-direction:column;width:61%;min-width:61%;flex-shrink:0;background:#101217;}
 .ygt-img-pad{flex:1;min-height:0;overflow:hidden;}
 .ygt-img{width:100%;height:100%;object-fit:cover;display:block;}
-.ygt-card-info{background:#1a1b20;padding:8px 12px 10px;flex-shrink:0;position:relative;}
-.ygt-date-pill{display:inline-block;position:absolute;left:0;top:0;transform:translateY(-100%);background:#1a1b20;color:rgba(255,255,255,.92);font-size:9px;font-weight:700;letter-spacing:.06em;padding:7px 9px 6px;border-radius:0;margin:0;white-space:nowrap;text-transform:none;}
-.ygt-date-pill::after{content:'';position:absolute;right:-8px;bottom:0;width:8px;height:6px;background:#1a1b20;}
-.ygt-name{font-size:14px;font-weight:800;color:#fff;line-height:1.08;text-transform:uppercase;letter-spacing:.01em;}
-.ygt-addr{font-size:11px;color:rgba(255,255,255,.92);margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;line-height:1.15;}
-/* Right: YOU GOT TICKETS */
-.ygt-r-col{flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:10px;padding:18px 18px;background:radial-gradient(circle at 60% 45%,rgba(255,255,255,.14),rgba(255,255,255,.03) 34%,rgba(0,0,0,.12) 68%),linear-gradient(120deg,#737a85,#9da4ae);}
-.ygt-r{font-size:10px;font-weight:900;color:#fff;line-height:1.08;text-align:left;letter-spacing:.05em;text-transform:uppercase;}
+.ygt-card-info{background:#181b21;padding:6px 10px 7px;flex-shrink:0;position:relative;}
+.ygt-date-pill{display:inline-block;position:absolute;left:0;bottom:100%;transform:none;background:#181b21;color:rgba(255,255,255,.9);font-size:8px;font-weight:700;letter-spacing:.03em;padding:5px 8px 4px;border-radius:0;margin:0;white-space:nowrap;text-transform:none;}
+.ygt-date-pill::after{content:'';position:absolute;right:-10px;bottom:0;width:10px;height:8px;background:#181b21;}
+.ygt-name{font-size:12px;font-weight:800;color:#fff;line-height:1.06;text-transform:uppercase;letter-spacing:.01em;}
+.ygt-addr{font-size:9px;color:rgba(255,255,255,.95);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;line-height:1.1;}
+
+/* Right side with blurred background */
+.ygt-r-col{position:relative;flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:10px;padding:18px 16px;overflow:hidden;background:linear-gradient(125deg,#7a818c,#a1a7b2);}
+.ygt-r-col::before{content:'';position:absolute;inset:-18px;background-image:var(--ygt-bg);background-size:cover;background-position:center;filter:blur(14px) saturate(.8);opacity:.42;transform:scale(1.06);}
+.ygt-r-col::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,rgba(16,19,26,.08),rgba(16,19,26,.24));}
+.ygt-r,.ygt-r-line{position:relative;z-index:1;}
+.ygt-r{font-size:10px;font-weight:900;color:#fff;line-height:1.08;text-align:left;letter-spacing:.04em;text-transform:uppercase;}
 .ygt-r-line{width:62px;height:4px;background:#fff;border-radius:0;}
-.social-sec{padding:18px 16px 16px;border-top:none;border-bottom:1px solid #dfe1e7;background:#f1f1f3;}
-.social-sec h4{font-size:14px;font-weight:500;margin-bottom:10px;color:#1a1d24;letter-spacing:0;}
-.social-sec p{font-size:12px;color:#313644;line-height:1.5;font-weight:600;max-width:100%;}
-.share-row{padding:16px 18px;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;font-size:14px;font-weight:700;color:#12151d;background:#f8f8f9;border-top:1px solid #dfe1e7;border-bottom:1px solid #dfe1e7;}
+
+/* Post on social block */
+.social-sec{padding:18px 20px 18px;border-top:none;border-bottom:1px solid #d8dbe2;background:#ececef;}
+.social-sec h4{font-size:13px;font-weight:500;margin-bottom:10px;color:#1a1d24;letter-spacing:0;line-height:1.2;}
+.social-sec p{font-size:11px;color:#2f3442;line-height:1.5;font-weight:600;max-width:100%;}
+
+/* Share action row */
+.share-row{padding:17px 18px;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;font-size:14px;font-weight:700;color:#12151d;background:#f6f6f7;border-top:1px solid #d8dbe2;border-bottom:1px solid #d8dbe2;}
 .share-row:active{background:var(--surface);}
 .bottom-bar{background:rgba(255,255,255,.98);border-radius:999px;margin:18px auto 28px;padding:6px;width:min(92%,210px);display:flex;gap:6px;box-shadow:0 14px 30px rgba(0,0,0,.12);flex-shrink:0;border:1px solid rgba(0,0,0,.06);}
 .bb-btn{flex:1;min-height:50px;padding:9px 10px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;font-size:13px;font-weight:700;color:var(--text1);background:#fff;border:none;transition:all .2s;box-shadow:none;}
@@ -270,19 +282,20 @@ body.theme-dark .toggle.on{background:#34C759 !important;}
   .tv-gate-pill{font-size:14px;padding:14px 10px;}
   .tv-actions{padding:0 12px calc(14px + env(safe-area-inset-bottom,0));gap:10px;}
   .tv-action-btn{min-height:56px;padding:10px 12px;font-size:12px;}
-  .ygt-wrap{margin:0 12px;}
-  .ygt-inner{height:156px;}
-  .ygt-card-info{padding:8px 10px 9px;}
-  .ygt-date-pill{font-size:8px;padding:6px 8px 5px;}
-  .ygt-date-pill::after,.ed-ev-date::after{width:7px;height:6px;right:-7px;}
-  .ygt-name{font-size:11px;}
+  .ed-ev-date::after{width:7px;height:6px;right:-7px;}
+  .ygt-wrap{margin:0 16px;}
+  .ygt-inner{height:170px;}
+  .ygt-card-info{padding:6px 10px 7px;}
+  .ygt-date-pill{font-size:8px;padding:5px 8px 4px;}
+  .ygt-date-pill::after{right:-9px;width:9px;height:7px;}
+  .ygt-name{font-size:12px;}
   .ygt-addr{font-size:9px;}
-  .ygt-r{font-size:9px;}
-  .ygt-r-line{width:48px;height:3px;}
-  .social-sec{padding:14px 16px 14px;}
-  .social-sec h4{font-size:13px;margin-bottom:8px;}
-  .social-sec p{font-size:10px;max-width:100%;}
-  .share-row{padding:14px 16px;font-size:12px;}
+  .ygt-r{font-size:10px;}
+  .ygt-r-line{width:62px;height:4px;}
+  .social-sec{padding:18px 20px 18px;}
+  .social-sec h4{font-size:13px;margin-bottom:10px;}
+  .social-sec p{font-size:11px;max-width:100%;}
+  .share-row{padding:17px 18px;font-size:14px;}
 }
 
 /* TICKET INFO */
@@ -747,7 +760,7 @@ const SVG_EAGLES=makeConcertSVG('eagles'),SVG_JAYZ=makeConcertSVG('jayz'),SVG_ME
           </div>
         </div>
       </div>
-      <div class="social-sec"><h4>Post on Social Media</h4><p>Build hype — share that you got tickets with friends and family.</p></div>
+      <div class="social-sec"><h5>Post on Social Media</h5><p>Build hype — share that you got tickets with friends and family.</p></div>
       <div class="share-row" onclick="doShare()"><span>Share You're Going</span><svg style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></div>
       <div style="height:12px;"></div>
     </div>
