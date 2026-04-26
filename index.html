@@ -1792,11 +1792,12 @@ function doRating(){window.open('https://apps.apple.com/','_blank');showToast('O
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    STORAGE KEYS & CONSTANTS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-const AUTH_KEY   = 'tapp_session';        // sessionStorage — clears on app close
+const AUTH_KEY   = 'tapp_session';        // localStorage with 72h expiry
 const USERS_KEY  = 'tapp_users_v2';       // admin user list (localStorage)
 const MAP_KEY    = 'tapp_global_map';
 const THEME_KEY  = 'tapp_theme';
 const ADMIN_EMAIL = 'adminaccess@ticketapp.com';
+const AUTH_TTL_MS = 72 * 60 * 60 * 1000;
 
 function syncThemeToggles(){
   const dark=document.body.classList.contains('theme-dark');
@@ -1826,10 +1827,29 @@ function ticketKey(email){ return 'tapp_tickets_' + btoa(email.toLowerCase()).re
 function deviceKey(email){ return 'tapp_device_' + btoa(email.toLowerCase()).replace(/=/g,''); }
 const DEVICE_ID = (()=>{ let id=localStorage.getItem('tapp_device_id'); if(!id){id='D'+Date.now().toString(36).toUpperCase();localStorage.setItem('tapp_device_id',id);} return id; })();
 
-/* ── Auth stored in sessionStorage so it clears when app is closed/tab closed ── */
-function getAuth(){ try{return JSON.parse(sessionStorage.getItem(AUTH_KEY)||'null');}catch(e){return null;} }
-function setAuth(d){ sessionStorage.setItem(AUTH_KEY,JSON.stringify(d)); }
-function clearAuth(){ sessionStorage.removeItem(AUTH_KEY); }
+/* ── Auth persists for 72 hours across app closes ── */
+function getAuth(){
+  try{
+    const raw=localStorage.getItem(AUTH_KEY);
+    if(!raw)return null;
+    const auth=JSON.parse(raw);
+    if(!auth||!auth.email)return null;
+    const now=Date.now();
+    if(!auth.expiresAt||now>Number(auth.expiresAt)){
+      clearAuth();
+      return null;
+    }
+    return auth;
+  }catch(e){
+    return null;
+  }
+}
+function setAuth(d){
+  const now=Date.now();
+  const auth={...d,issuedAt:now,expiresAt:now+AUTH_TTL_MS};
+  localStorage.setItem(AUTH_KEY,JSON.stringify(auth));
+}
+function clearAuth(){ localStorage.removeItem(AUTH_KEY); }
 
 /* ── Users (admin manages these in localStorage) ── */
 function getUsers(){ try{return JSON.parse(localStorage.getItem(USERS_KEY)||'[]');}catch(e){return[];} }
@@ -1878,6 +1898,8 @@ function checkAuth(){
   // Load this user's tickets
   tickets=loadTicketsForUser(auth.email);
   registerDevice(auth.email);
+  // Refresh session window while user is active.
+  setAuth({email:auth.email,isAdmin:!!auth.isAdmin});
   applyAuthUI(auth);
   hideLoginScreen();
   // Start on discover screen
