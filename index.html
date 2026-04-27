@@ -159,17 +159,17 @@
 
 /* YOU GOT TICKETS top card */
 .ygt-wrap{border-radius:0;overflow:hidden;position:relative;background:#959da7;box-shadow:none;border:none;}
-.ygt-inner{position:relative;display:flex;align-items:stretch;gap:0;height:170px;}
+.ygt-inner{position:relative;display:flex;align-items:stretch;gap:0;height:160px;}
 
 /* Left card */
 .ygt-img-col{display:flex;flex-direction:column;width:61%;min-width:61%;flex-shrink:0;background:#101217;}
 .ygt-img-pad{flex:1;min-height:0;overflow:hidden;}
 .ygt-img{width:100%;height:100%;object-fit:cover;display:block;}
-.ygt-card-info{background:#181b21;padding:6px 10px 7px;flex-shrink:0;position:relative;}
-.ygt-date-pill{display:inline-block;position:absolute;left:0;bottom:100%;transform:none;background:#181b21;color:rgba(255,255,255,.9);font-size:8px;font-weight:700;letter-spacing:.03em;padding:5px 8px 4px;border-radius:0;margin:0;white-space:nowrap;text-transform:none;}
-.ygt-date-pill::after{content:'';position:absolute;right:-10px;bottom:0;width:10px;height:8px;background:#181b21;}
-.ygt-name{font-size:12px;font-weight:800;color:#fff;line-height:1.06;text-transform:uppercase;letter-spacing:.01em;}
-.ygt-addr{font-size:9px;color:rgba(255,255,255,.95);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;line-height:1.1;}
+.ygt-card-info{background:#181b21;padding:5px 9px 6px;flex-shrink:0;position:relative;}
+.ygt-date-pill{display:inline-block;position:absolute;left:0;bottom:100%;transform:none;background:#181b21;color:rgba(255,255,255,.9);font-size:7px;font-weight:700;letter-spacing:.02em;padding:4px 7px 3px;border-radius:0;margin:0;white-space:nowrap;text-transform:none;}
+.ygt-date-pill::after{content:'';position:absolute;right:-8px;bottom:0;width:8px;height:6px;background:#181b21;}
+.ygt-name{font-size:10px;font-weight:800;color:#fff;line-height:1.05;text-transform:uppercase;letter-spacing:.01em;}
+.ygt-addr{font-size:8px;color:rgba(255,255,255,.95);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;line-height:1.05;}
 
 /* Right side with blurred background */
 .ygt-r-col{position:relative;flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:10px;padding:18px 16px;overflow:hidden;background:linear-gradient(125deg,#7a818c,#a1a7b2);}
@@ -240,12 +240,20 @@ body.theme-dark .toggle.on{background:#34C759 !important;}
 .tv-dot-mask{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.18) 28%,transparent 30%);background-size:22px 22px;mix-blend-mode:screen;opacity:.42;transition:transform .18s ease-out;}
 .tv-artwork{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .18s ease-out;}
 .tv-nylon{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.3),rgba(0,0,0,.12) 24%,rgba(0,0,0,.28) 58%,rgba(0,0,0,.38));backdrop-filter:saturate(.9);pointer-events:none;z-index:1;}
-.tv-code-zone{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:min(100%,340px);display:flex;align-items:center;justify-content:center;z-index:3;padding:0 14px;}
+.tv-code-zone{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(100%,340px);display:flex;align-items:center;justify-content:center;z-index:3;padding:0 14px;}
 .tv-code-zone.is-locked{width:min(calc(100% - 28px),340px);}
 .tv-code-slot{width:100%;display:flex;align-items:center;justify-content:center;}
-.tv-code-qr{position:relative;width:min(100%,336px);background:transparent;padding:0;display:block;overflow:hidden;}
-.tv-code-video{width:100%;height:auto;display:block;background:transparent;filter:contrast(1.08) brightness(1.02);}
+.tv-code-qr{position:relative;width:min(100%,320px);aspect-ratio:1/1;background:#fff;padding:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1px rgba(255,255,255,.1);overflow:hidden;}
+.tv-code-qr::before{content:'';position:absolute;top:8px;bottom:8px;left:-40%;width:40%;background:linear-gradient(to right,rgba(39,158,255,0),rgba(39,158,255,.3) 30%,rgba(39,158,255,.88) 50%,rgba(39,158,255,.3) 70%,rgba(39,158,255,0));mix-blend-mode:screen;animation:tv-scan-sweep 2.2s linear infinite;pointer-events:none;z-index:2;}
+.tv-code-qr::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,87,255,.05),rgba(17,87,255,0) 20%,rgba(17,87,255,.09) 82%,rgba(17,87,255,.05));pointer-events:none;z-index:1;}
+.tv-code-qr img,.tv-code-qr canvas{width:100% !important;height:100% !important;display:block;}
 .tv-code-fallback{width:100%;height:100%;background:repeating-linear-gradient(0deg,#000 0 6px,#fff 6px 12px),repeating-linear-gradient(90deg,#000 0 6px,#fff 6px 12px);background-blend-mode:multiply;}
+@keyframes tv-scan-sweep{
+  0%{transform:translateX(-140%);opacity:0;}
+  10%{opacity:1;}
+  82%{opacity:1;}
+  100%{transform:translateX(420%);opacity:0;}
+}
 .tv-code-note{font-size:12px;font-weight:700;color:#cfd3e0;padding:10px 12px;text-align:center;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.18);width:min(calc(100% - 28px),336px);}
 .tv-locked-card{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border:1px solid rgba(255,255,255,.12);background:rgba(17,16,24,.88);color:#fff;backdrop-filter:blur(5px);}
 .tv-locked-copy{font-size:12px;line-height:1.35;max-width:170px;}
@@ -272,9 +280,9 @@ body.theme-dark .toggle.on{background:#34C759 !important;}
   .tv-shell{padding-top:calc(var(--safe-top) + 2px);}
   .tv-top{padding:2px 10px 10px;}
   .tv-slide{padding:0 10px;}
-  .tv-code-zone{top:14px;width:min(calc(100% - 20px),278px);padding:0;}
+  .tv-code-zone{top:50%;width:min(calc(100% - 20px),278px);padding:0;}
   .tv-code-zone.is-locked{width:min(calc(100% - 24px),278px);}
-  .tv-code-qr{width:min(100%,270px);padding:12px;}
+  .tv-code-qr{width:min(100%,256px);padding:12px;}
   .tv-visual-wrap{min-height:360px;}
   .tv-detail-card{padding:16px 14px 18px;}
   .tv-seat-grid{gap:10px;}
@@ -284,12 +292,12 @@ body.theme-dark .toggle.on{background:#34C759 !important;}
   .tv-action-btn{min-height:56px;padding:10px 12px;font-size:12px;}
   .ed-ev-date::after{width:7px;height:6px;right:-7px;}
   .ygt-wrap{margin:0 16px;}
-  .ygt-inner{height:170px;}
-  .ygt-card-info{padding:6px 10px 7px;}
-  .ygt-date-pill{font-size:8px;padding:5px 8px 4px;}
-  .ygt-date-pill::after{right:-9px;width:9px;height:7px;}
-  .ygt-name{font-size:12px;}
-  .ygt-addr{font-size:9px;}
+  .ygt-inner{height:160px;}
+  .ygt-card-info{padding:5px 9px 6px;}
+  .ygt-date-pill{font-size:7px;padding:4px 7px 3px;}
+  .ygt-date-pill::after{right:-8px;width:8px;height:6px;}
+  .ygt-name{font-size:10px;}
+  .ygt-addr{font-size:8px;}
   .ygt-r{font-size:10px;}
   .ygt-r-line{width:62px;height:4px;}
   .social-sec{padding:18px 20px 18px;}
@@ -1435,34 +1443,14 @@ function buildViewerCode(slot,t,index){
   const box=document.createElement('div');
   box.className='tv-code-qr';
   slot.appendChild(box);
-  const video=document.createElement('video');
-  video.className='tv-code-video';
-  video.src='bar.mp4';
-  video.preload='auto';
-  video.autoplay=true;
-  video.muted=true;
-  video.loop=true;
-  video.playsInline=true;
-  video.setAttribute('playsinline','');
-  video.setAttribute('webkit-playsinline','');
-  video.onerror=()=>{
-    const barcodeText=`${t.barcode||'TM'}-${index+1}-${t.orderId||'001'}`;
-    if(typeof JsBarcode!=='undefined'){
-      try{
-        const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-        JsBarcode(svg,barcodeText,{format:'CODE128',lineColor:'#111111',background:'#ffffff',width:2,height:86,displayValue:false,margin:0});
-        box.innerHTML='';
-        box.appendChild(svg);
-        return;
-      }catch(e){}
-    }
-    box.innerHTML='<div class="tv-code-fallback"></div>';
-  };
-  box.appendChild(video);
-  const playPromise=video.play();
-  if(playPromise&&typeof playPromise.catch==='function'){
-    playPromise.catch(()=>video.onerror());
+  const qrData=`${t.orderId||'ORD'}|${t.barcode||'TICKET'}|${index+1}|${t.artist||'EVENT'}`;
+  if(typeof QRCode!=='undefined'){
+    try{
+      new QRCode(box,{text:qrData,width:288,height:288,colorDark:'#000000',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
+      return;
+    }catch(e){}
   }
+  box.innerHTML='<div class="tv-code-fallback"></div>';
 }
 function syncViewerCounter(){
   const carousel=document.getElementById('v-carousel');
