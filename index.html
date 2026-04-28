@@ -114,7 +114,17 @@
 #s-tickets .t-empty *{color:rgba(255,255,255,.45) !important;}
 
 /* EVENT DETAIL */
-#s-detail{background:#ececed;}
+#s-detail{background:#ececed;position:relative;}
+.ed-compact-top{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;gap:12px;padding:calc(var(--safe-top) + 8px) 16px 12px;background:rgba(191,191,191,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;transform:translateY(-10px);pointer-events:none;transition:opacity .22s ease,transform .22s ease;z-index:8;}
+#s-detail.is-collapsed .ed-compact-top{opacity:1;transform:translateY(0);pointer-events:auto;}
+.ed-compact-back,.ed-compact-scan{width:44px;height:44px;border:none;border-radius:999px;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;font-family:inherit;}
+.ed-compact-back{background:rgba(0,0,0,.18);color:#fff;font-size:30px;font-weight:500;line-height:1;}
+.ed-compact-scan{background:#0a56dc;color:#fff;font-size:18px;font-weight:800;box-shadow:0 8px 20px rgba(10,86,220,.26);}
+.ed-compact-copy{flex:1;min-width:0;text-align:center;}
+.ed-compact-title{font-size:13px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;letter-spacing:.01em;}
+.ed-compact-meta{font-size:11px;color:rgba(255,255,255,.82);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px;}
+#ed-scroll{background:#ececed;}
+.ed-detail-head{position:relative;flex-shrink:0;padding-bottom:86px;}
 .ed-hero{height:300px;position:relative;flex-shrink:0;overflow:visible;margin:0;border-radius:0;box-shadow:none;}
 .ed-hero img{width:100%;height:100%;object-fit:cover;display:block;}
 .ed-hero-grad{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.08) 24%,rgba(0,0,0,.48) 100%);}
@@ -131,8 +141,8 @@
 .ed-ev-qty{font-size:13px;font-weight:700;color:#f5f5f7;display:flex;align-items:center;gap:6px;white-space:nowrap;line-height:1;letter-spacing:.005em;}
 .vt-btn{background:#0a56dc;margin:0;border-radius:0;padding:11px 14px;text-align:center;font-size:12px;font-weight:700;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;flex-shrink:0;box-shadow:none;transition:all .2s;}
 .vt-btn:active{transform:scale(.98);background:var(--blue-dk);}
-#s-detail>.tabs-row{margin-top:86px;background:#ececed;}
-.order-card{border:none;border-radius:0;margin:126px 16px 10px;overflow:visible;background:transparent;}
+.ed-detail-tabs{position:sticky;top:calc(var(--safe-top) + 64px);z-index:6;background:#ececed;}
+.order-card{border:none;border-radius:0;margin:14px 16px 10px;overflow:visible;background:transparent;}
 .order-hd{display:flex;justify-content:space-between;align-items:center;padding:0 6px 10px;}
 .o-num{font-size:15px;font-weight:800;color:#11131a;}
 .o-cnt{font-size:12px;color:#5b6070;margin-top:3px;}
@@ -732,14 +742,15 @@ const SVG_EAGLES=makeConcertSVG('eagles'),SVG_JAYZ=makeConcertSVG('jayz'),SVG_ME
 
 <!-- EVENT DETAIL -->
 <div class="scr full" id="s-detail">
-  <div class="ed-hero">
-    <img id="ed-img" style="width:100%;height:100%;object-fit:cover;display:block;" alt="">
-    <div class="ed-hero-grad"></div>
-    <div class="ed-float-bar"><button class="ed-nav-btn" onclick="goBack()">←</button><button class="ed-help-btn" onclick="openGen(false)">Help</button></div>
-    <div class="ed-hero-foot"><div class="ed-copy-wrap"><div class="ed-ev-date" id="ed-dateline">—</div><div class="ed-ev-title" id="ed-titleline">—</div><div class="ed-meta-row"><div class="ed-ev-addr" id="ed-addrline">—</div><div class="ed-ev-qty" id="ed-qtyline">🎟 x1</div></div></div><div class="vt-btn" onclick="openViewer()">▧ &nbsp;View Tickets</div></div>
-  </div>
-  <div class="tabs-row"><div class="tab on" id="ed-tab-tix" onclick="setEdTab('tix')">Tickets</div><div class="tab" id="ed-tab-ext" onclick="setEdTab('ext')">Extras</div></div>
+  <div class="ed-compact-top" id="ed-compact-top"><button class="ed-compact-back" onclick="goBack()">←</button><div class="ed-compact-copy"><div class="ed-compact-title" id="ed-compact-title">—</div><div class="ed-compact-meta" id="ed-compact-meta">—</div></div><button class="ed-compact-scan" onclick="openViewer()">▦</button></div>
   <div class="scroll" id="ed-scroll">
+    <div class="ed-detail-head"><div class="ed-hero">
+      <img id="ed-img" style="width:100%;height:100%;object-fit:cover;display:block;" alt="">
+      <div class="ed-hero-grad"></div>
+      <div class="ed-float-bar"><button class="ed-nav-btn" onclick="goBack()">←</button><button class="ed-help-btn" onclick="openGen(false)">Help</button></div>
+      <div class="ed-hero-foot"><div class="ed-copy-wrap"><div class="ed-ev-date" id="ed-dateline">—</div><div class="ed-ev-title" id="ed-titleline">—</div><div class="ed-meta-row"><div class="ed-ev-addr" id="ed-addrline">—</div><div class="ed-ev-qty" id="ed-qtyline">🎟 x1</div></div></div><div class="vt-btn" onclick="openViewer()">▧ &nbsp;View Tickets</div></div>
+    </div></div>
+    <div class="tabs-row ed-detail-tabs"><div class="tab on" id="ed-tab-tix" onclick="setEdTab('tix')">Tickets</div><div class="tab" id="ed-tab-ext" onclick="setEdTab('ext')">Extras</div></div>
     <div id="ed-tix-content">
       <div class="order-card" style="margin-top:14px;"><div class="order-hd"><div><div class="o-num" id="ed-onum">Order #—</div><div class="o-cnt" id="ed-ocnt">x1 Ticket</div></div><div style="font-size:24px;cursor:pointer;color:var(--text3);padding:4px 8px;" onclick="showManageModal(curIdx)">⋮</div></div><div id="ed-rows"></div></div>
       <!-- LIVE MAP -->
@@ -1146,6 +1157,7 @@ const EVENTS=[
 const NO_NAV=new Set(['s-detail','s-viewer','s-info','s-xfr-select','s-xfr-to','s-recipient','s-auth','s-auth-success']);
 const TAB_SCREENS={disc:'s-disc',foryou:'s-foryou',tickets:'s-tickets',sell:'s-tickets',account:'s-account'};
 let stack=['s-disc'], tickets=[], curIdx=0, curSlide=0, pickedSeats=new Set(), manageIdx=-1, genStanding=true, pressTimer=null, genIsEdit=false, editIdx=-1, viewerTiltCleanup=null, viewerScrollCleanup=null;
+let detailScrollCleanup=null;
 let curAddr='Atlanta, GA';
 
 /* ━━━ PERSISTENCE ━━━ */
@@ -1184,7 +1196,14 @@ function goto(id){
   }
   hide(stack[stack.length-1]);show(id);stack.push(id);updNavVis();
 }
-function goBack(){if(stack.length<=1)return;hide(stack.pop());show(stack[stack.length-1]);updNavVis();}
+function goBack(){
+  if(stack.length<=1)return;
+  hide(stack.pop());
+  const prevScreen=stack[stack.length-1];
+  show(prevScreen);
+  if(prevScreen==='s-detail')startDetailScrollState(false);
+  updNavVis();
+}
 function switchTab(t){
   hide(stack[stack.length-1]);
   const target=TAB_SCREENS[t]||'s-disc';
@@ -1196,8 +1215,26 @@ function switchTab(t){
 function show(id){const e=document.getElementById(id);if(e)e.classList.add('on');}
 function hide(id){
   if(id==='s-viewer')stopViewerEnhancements();
+  if(id==='s-detail')stopDetailScrollState();
   const e=document.getElementById(id);
   if(e)e.classList.remove('on');
+}
+function startDetailScrollState(resetScroll=true){
+  stopDetailScrollState();
+  const scroll=document.getElementById('ed-scroll');
+  const screen=document.getElementById('s-detail');
+  if(!scroll||!screen)return;
+  const onScroll=()=>screen.classList.toggle('is-collapsed',scroll.scrollTop>132);
+  scroll.addEventListener('scroll',onScroll,{passive:true});
+  if(resetScroll)scroll.scrollTop=0;
+  onScroll();
+  detailScrollCleanup=()=>{
+    scroll.removeEventListener('scroll',onScroll);
+    screen.classList.remove('is-collapsed');
+  };
+}
+function stopDetailScrollState(){
+  if(detailScrollCleanup){detailScrollCleanup();detailScrollCleanup=null;}
 }
 function setNav(t){
   document.querySelectorAll('.nv').forEach(el=>{el.classList.remove('on');el.querySelector('svg').style.stroke='#9CA3AF';el.querySelector('span').style.color='';});
@@ -1311,6 +1348,8 @@ function openEvent(id){
   document.getElementById('ed-dateline').textContent=`${ev.date} · ${ev.time}`;
   document.getElementById('ed-titleline').textContent=ev.title;
   document.getElementById('ed-addrline').textContent=ev.addr;
+  document.getElementById('ed-compact-title').textContent=ev.title;
+  document.getElementById('ed-compact-meta').textContent=ev.addr;
   document.getElementById('ed-qtyline').textContent='Browse';
   document.getElementById('ed-onum').textContent='No ticket — browse event';
   document.getElementById('ed-ocnt').textContent='Tap below to purchase';
@@ -1323,6 +1362,7 @@ function openEvent(id){
   curAddr=ev.addr;
   setLiveMap(ev.addr);
   goto('s-detail');
+  startDetailScrollState(true);
 }
 function setEdTab(t){
   document.getElementById('ed-tab-tix').classList.toggle('on',t==='tix');
@@ -1355,6 +1395,8 @@ function openDetail(idx){
   document.getElementById('ed-dateline').textContent=`${t.date} · ${t.time}`;
   document.getElementById('ed-titleline').textContent=fn;
   document.getElementById('ed-addrline').textContent=t.address;
+  document.getElementById('ed-compact-title').textContent=fn;
+  document.getElementById('ed-compact-meta').textContent=t.address;
   document.getElementById('ed-qtyline').textContent=`x${t.qty}`;
   document.getElementById('ed-onum').textContent=`Order #${t.orderId}`;
   document.getElementById('ed-ocnt').textContent=`x${t.qty} Ticket${t.qty>1?'s':''}`;
@@ -1377,6 +1419,7 @@ function openDetail(idx){
   }
   buildSeatCards(t);
   goto('s-detail');
+  startDetailScrollState(true);
 }
 
 function renderTickets(){
